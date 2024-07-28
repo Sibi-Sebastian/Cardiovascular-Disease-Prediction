@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="static/image/health.jpg">
+        <!-- Bootstrap CSS -->
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+        * {
+          margin: 0;
+          padding: 0;
+          font-family: 'Josefin Sans', sans-serif;
+        }
+        html, body, header, #intro {
+          height: 100%;
+        }
+        img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+        }
+        </style>
+        <title>Heart Disease Prediction</title>
+    </head>    
+  <body>
+    <!--Mask-->
+    <div id="intro" class="container-fluid view">
+      <h1 class="text-center text-capitalize pt-5">Know your chances of getting a heart failure in one click!</h1>
+      <hr class="w-75 mx-auto pt-5">
+      <div class="row mb-5">
+        <div class="col-lg-6 col-md-6 col-12 my-auto">
+          <img src="static\image\heart.jpg" class="float-left">
+        </div>
+        <div class="col-lg-6 col-md-6 col-12">
+          <form action="/predict" method="post">
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input class="form-control" type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+              <label for="sex">Sex</label>
+              <select class="form-control" id="sex" name="sex" required>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cp">Chest Pain Type</label>
+              <select class="form-control" id="cp" name="cp" required>
+                <option value="0">Asymptomatic</option>
+                <option value="1">Typical Angina</option>
+                <option value="2">Atypical Angina</option>
+                <option value="3">Non-Anginal Pain</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="trestbps">Resting Blood Pressure (in mm Hg)</label>
+              <input class="form-control" type="number" id="trestbps" name="trestbps" required>
+            </div>
+            <div class="form-group">
+              <label for="chol">Serum Cholesterol in mg/dl</label>
+              <input class="form-control" type="number" id="chol" name="chol" required>
+            </div>
+            <div class="form-group">
+              <label for="fbs">Fasting Blood Sugar</label>
+              <select class="form-control" id="fbs" name="fbs" required>
+                <option value="0">Fasting Blood Sugar < 120 mg/dl</option>
+                <option value="1">Fasting Blood Sugar > 120 mg/dl</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="restecg">Resting Electrocardiographic Result</label>
+              <select class="form-control" id="restecg" name="restecg" required>
+                <option value="0">Normal</option>
+                <option value="1">Having ST-T wave abnormality</option>
+                <option value="2">Left ventricular hypertrophy</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="thalach">Maximum Heart Rate Achieved</label>
+              <input class="form-control" type="number" id="thalach" name="thalach" required>
+            </div>
+            <div class="form-group">
+              <label for="exang">Exercise Induced Angina</label>
+              <select class="form-control" id="exang" name="exang" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="oldpeak">ST Depression Induced by Exercise Relative to Rest</label>
+              <input class="form-control" type="number" step="any" id="oldpeak" name="oldpeak" required>
+            </div>
+            <div class="form-group">
+              <label for="slope">Slope of the Peak Exercise ST Segment</label>
+              <select class="form-control" id="slope" name="slope" required>
+                <option value="0">Upsloping</option>
+                <option value="1">Flat</option>
+                <option value="2">Downsloping</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ca">Number of Major Vessels Colored by Fluoroscopy</label>
+              <input class="form-control" type="number" id="ca" name="ca" required>
+            </div>
+            <div class="form-group">
+              <label for="thal">Thalassemia</label>
+              <select class="form-control" id="thal" name="thal" required>
+                <option value="0">Normal</option>
+                <option value="1">Fixed Defect</option>
+                <option value="2">Reversible Defect</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-danger">Predict</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--/.Mask-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
